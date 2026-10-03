@@ -2,7 +2,7 @@
   "name": "TianDoHome",
   "version": "0.0.0",
   "private": false,
-  "description": "使用 Vue 3 + Vite 构建的配置驱动个人主页 / 社团主页模板",
+  "description": "使用 Vue3 编写的天冬氨酸个人网站",
   "license": "MIT",
   "keywords": [
     "vue",
