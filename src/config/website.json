@@ -1,5 +1,271 @@
 {
-  "Root": {
-    "Title": "冬草空间站 - 揽天冬之幽，品橘果之甘，饮清茶之淡，悟生活之简"
+  "site": {
+    "htmlLang": "zh-CN",
+    "favicon": "/favicon.ico",
+    "titleKey": "website.title",
+    "defaultLocale": "zh",
+    "fallbackLocale": "zh",
+    "locales": [
+      {
+        "code": "zh",
+        "name": "简体中文"
+      },
+      {
+        "code": "tc",
+        "name": "繁體中文"
+      },
+      {
+        "code": "en",
+        "name": "English"
+      },
+      {
+        "code": "ja",
+        "name": "日本語"
+      }
+    ]
+  },
+  "theme": {
+    "textColor": "#474440",
+    "themeColor": "#4a6293",
+    "themeColor2": "#f7f7f7",
+    "themeColor3": "#f0f0f0",
+    "borderColor": "#4a62936c",
+    "backgroundColor": "#ffffff",
+    "navbarHover": "#4a62931a",
+    "navbarHover2": "#47444011",
+    "backgroundColorNavbar": "#ffffffea",
+    "backgroundColorOc": "#ffffff88",
+    "borderRadius": "10px",
+    "easeOut": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "easeInOut": "cubic-bezier(0.65, 0, 0.35, 1)",
+    "durationFast": "0.5s",
+    "durationBase": "0.35s",
+    "durationSlow": "0.5s"
+  },
+  "assets": {
+    "logo": "/img/DoNG/DoNG_Logo.webp",
+    "logoBold": "/img/DoNG/DoNG_Logo_Bold.webp",
+    "avatar": "/img/DoNG/DoNG_Avatar.webp",
+    "homeBackground": "/img/DoNG/DoNG_Home_Bg.webp",
+    "pageBackground": "/img/DoNG/DoNG_Bg3.webp",
+    "menuIcon": "/img/icon/menu.png",
+    "langIcon": "/img/icon/lang.png",
+    "notFoundLeft": "/img/DoNG/DoNG_404_left.webp",
+    "notFoundRight": "/img/DoNG/DoNG_404_right.webp"
+  },
+  "banner": {
+    "enabled": true,
+    "image": "/img/banner/cat_text.webp",
+    "alt": "Banner",
+    "overlays": [
+      {
+        "text": "The sun goes to cross the Western sea,\nleaving its last salutation to the East.",
+        "top": "10px",
+        "left": "10px",
+        "hideOnMobile": false
+      },
+      {
+        "text": "I rise, not for the age, but for who I am to be.",
+        "top": "240px",
+        "right": "10px",
+        "hideOnMobile": true
+      }
+    ]
+  },
+  "navbar": [
+    {
+      "id": "home",
+      "nameKey": "navbar.home",
+      "path": "/",
+      "type": "internal",
+      "menuOnly": false
+    },
+    {
+      "id": "about",
+      "nameKey": "navbar.about",
+      "path": "/about",
+      "type": "internal",
+      "menuOnly": false
+    },
+    {
+      "id": "donate",
+      "nameKey": "navbar.donate",
+      "path": "/donate",
+      "type": "internal",
+      "menuOnly": false
+    },
+    {
+      "id": "contact",
+      "nameKey": "navbar.contact",
+      "path": "/contact",
+      "type": "internal",
+      "menuOnly": true
+    },
+    {
+      "id": "friend",
+      "nameKey": "navbar.friend",
+      "path": "/friend",
+      "type": "internal",
+      "menuOnly": true
+    },
+    {
+      "id": "blog",
+      "nameKey": "navbar.blog",
+      "path": "https://blog.loxi.work",
+      "type": "external",
+      "menuOnly": false
+    }
+  ],
+  "about": {
+    "sections": [
+      {
+        "id": "organization",
+        "card": "organization",
+        "titleKey": "title.organization",
+        "subtitleKey": "title.organizationSub",
+        "items": [
+          {
+            "titleKey": "about.coshTitle",
+            "contentKey": "about.coshContent",
+            "logo": "/img/logo/logo_cosh_dark.svg",
+            "link": "https://cosh.work"
+          }
+        ]
+      },
+      {
+        "id": "activeProjects",
+        "card": "showlist",
+        "titleKey": "title.activeProjects",
+        "subtitleKey": "title.activeProjectsSub",
+        "items": [
+          {
+            "titleKey": "about.sarLabTitle",
+            "contentKey": "about.sarLabContent",
+            "logo": "/img/logo/sarlab_logo.svg",
+            "link": "https://sarlab.cosh.work"
+          },
+          {
+            "titleKey": "about.sawToolTitle",
+            "contentKey": "about.sawToolContent",
+            "logo": "/img/logo/sarlab_logo.svg",
+            "link": "https://sawtool.cosh.work"
+          }
+        ]
+      },
+      {
+        "id": "aiProjects",
+        "card": "showlist",
+        "titleKey": "title.aiProjects",
+        "subtitleKey": "title.aiProjectsSub",
+        "items": [
+          {
+            "titleKey": "about.sarMarketTitle",
+            "contentKey": "about.sarMarketContent",
+            "logo": "https://market.loxi.work/favicon.ico",
+            "link": "https://market.loxi.work"
+          }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "titleKey": "title.contact",
+    "subtitleKey": "title.contactSub",
+    "links": [
+      {
+        "id": "qq",
+        "title": "QQ",
+        "link": "https://qm.qq.com/q/8E0ZD3jt9S",
+        "logo": "/img/logo/QQ.png",
+        "descKey": "contact.qqDesc"
+      },
+      {
+        "id": "discord",
+        "title": "Discord",
+        "link": "http://discord.com/users/1007503082600546314",
+        "logo": "/img/logo/Discord.svg",
+        "descKey": "contact.discordDesc"
+      },
+      {
+        "id": "github",
+        "title": "GitHub",
+        "link": "https://github.com/loxidev",
+        "logo": "/img/logo/GitHub.svg",
+        "descKey": "contact.githubDesc"
+      },
+      {
+        "id": "bilibili",
+        "title": "Bilibili",
+        "link": "https://space.bilibili.com/1093209533",
+        "logo": "/img/logo/Bilibili.svg",
+        "descKey": "contact.bilibiliDesc"
+      },
+      {
+        "id": "email",
+        "title": "Email",
+        "link": "mailto:loxidev@cosh.work",
+        "logo": "/img/logo/Email.svg",
+        "descKey": "contact.emailDesc"
+      }
+    ]
+  },
+  "friend": {
+    "titleKey": "title.friend",
+    "subtitleKey": "title.friendSub",
+    "shuffle": true,
+    "links": [
+      {
+        "title": "孙悟元",
+        "content": "今年欢笑复明年，秋月春风等闲度。",
+        "logo": "https://wuyuan.dev/media/avatar.png",
+        "link": "https://wuyuan.dev/"
+      },
+      {
+        "title": "zzdev",
+        "content": "為無聊的人生賦予一點意義罷",
+        "logo": "https://cosh.work/img/zzdev_avatar.webp",
+        "link": "https://zzdev.carrd.co/"
+      },
+      {
+        "title": "OiklM",
+        "content": "善於開發軟體、網頁、遊戲類專案",
+        "logo": "https://avatars.githubusercontent.com/u/160687846?v=4",
+        "link": "https://www.oiklm.com/"
+      },
+      {
+        "title": "Lithescale",
+        "content": "戚雨藏云碎诡风，轻羽绵鳞猫猫龙",
+        "logo": "/img/DoNG/other/Lithescale.webp",
+        "link": "https://www.lscd.cc/"
+      },
+      {
+        "title": "夜白的小空间",
+        "content": "Live Today,Love Tomorrow,Unite Forever",
+        "logo": "https://img.yebaiwn.top/yebai.jpg",
+        "link": "https://blog.yebaiwn.top/"
+      },
+      {
+        "title": "龙星划空",
+        "content": "人生近看是悲剧，远看是喜剧",
+        "logo": "https://blog.furryawa.com/images/atiq.png",
+        "link": "https://blog.furryawa.com/"
+      }
+    ]
+  },
+  "donate": {
+    "image": "/img/DoNG/other/weixin_qr.webp"
+  },
+  "organization": {
+    "avatars": [
+      "https://avatars.githubusercontent.com/u/110319858?v=4",
+      "https://avatars.githubusercontent.com/u/160687846?v=4",
+      "https://cosh.work/img/zzdev_avatar.webp"
+    ]
+  },
+  "features": {
+    "moeCounter": {
+      "enabled": true,
+      "src": "https://count.getloli.com/@LoXidEv?name=LoXidEv&theme=booru-ve&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto"
+    }
   }
 }

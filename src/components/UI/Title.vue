@@ -1,4 +1,6 @@
 <script>
+import config from '@/config'
+
 export default {
     props: {
         title: {
@@ -9,6 +11,11 @@ export default {
             type: String,
             default: ''
         },
+    },
+    data() {
+        return {
+            assets: config.assets,
+        }
     },
     computed: {
         displayTitle() {
@@ -27,7 +34,7 @@ export default {
         <div class="dc_title_h2_subtitle">
             {{ displaySubtitle }}
         </div>
-        <img src="/img/DoNG/DoNG_Logo.webp" alt="冬冬" class="dc_title_h2_logo">
+        <img :src="assets.logo" alt="冬冬" class="dc_title_h2_logo">
     </div>
 </template>
 

@@ -1,5 +1,6 @@
 <script>
 import SelLang from './SelLang.vue';
+import config from '@/config';
 
 export default {
     components: {
@@ -8,54 +9,18 @@ export default {
     data() {
         return {
             isMenu: false,
+            assets: config.assets,
         }
     },
     computed: {
         navbarLinkConfig() {
-            return [
-                {
-                    name: this.$t('navbar.home'),
-                    id: "home",
-                    path: "/",
-                    isMenu: false,
-                    isLink: false
-                },
-                {
-                    name: this.$t('navbar.about'),
-                    id: "about",
-                    path: "/about",
-                    isMenu: false,
-                    isLink: false
-                },
-                {
-                    name: this.$t('navbar.donate'),
-                    id: "donate",
-                    path: "/donate",
-                    isMenu: false,
-                    isLink: false
-                },
-                {
-                    name: this.$t('navbar.contact'),
-                    id: "contact",
-                    path: "/contact",
-                    isMenu: true,
-                    isLink: false
-                },
-                {
-                    name: this.$t('navbar.friend'),
-                    id: "friend",
-                    path: "/friend",
-                    isMenu: true,
-                    isLink: false
-                },
-                {
-                    name: this.$t('navbar.blog'),
-                    id: "blog",
-                    path: "https://blog.loxi.work",
-                    isLink: true,
-                    isMenu: false
-                },
-            ]
+            return config.navbar.map(item => ({
+                name: this.$t(item.nameKey),
+                id: item.id,
+                path: item.path,
+                isLink: item.type === 'external',
+                isMenu: !!item.menuOnly,
+            }))
         }
     },
     methods: {
@@ -78,7 +43,7 @@ export default {
         <Transition name="menu">
             <div class="navbar_menu" v-if="isMenu">
                 <div class="menu_banner">
-                    <img src="/img/DoNG/DoNG_Logo.webp" alt="DoNG Logo" class="menu_banner_logo">
+                    <img :src="assets.logo" alt="DoNG Logo" class="menu_banner_logo">
                     <div>
                         <div>{{ $t('website.name') }}</div>
                         <div class="menu_banner_text_subtitle">
@@ -112,7 +77,7 @@ export default {
         </Transition>
         <div class="loxi_navbar animate__animated animate__fadeIn animate__delay-1s">
             <button :class="'navbar_item_button ' + (isMenu ? 'button_hover' : '')" @click="MenuClick">
-                <img src="/img/icon/menu.png" alt="Menu" class="navbar_item_button_icon">
+                <img :src="assets.menuIcon" alt="Menu" class="navbar_item_button_icon">
             </button>
             <div v-for="item in navbarLinkConfig.filter(item => !item.isLink && !item.isMenu)" :key="item.id">
                 <RouterLink :to="item.path" :class="'navbar_item ' + (($route.path == item.path) ? 'focus' : '')">

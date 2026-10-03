@@ -1,4 +1,6 @@
 <script>
+import config from '@/config'
+
 export default {
     props: {
         obj: {
@@ -12,11 +14,7 @@ export default {
     },
     data() {
         return {
-            avatarList: [
-                'https://avatars.githubusercontent.com/u/110319858?v=4',
-                'https://avatars.githubusercontent.com/u/160687846?v=4',
-                'https://cosh.work/img/zzdev_avatar.webp',
-            ],
+            avatarList: config.organization.avatars,
         }
     },
 }

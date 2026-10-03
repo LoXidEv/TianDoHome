@@ -1,25 +1,29 @@
 {
-  "name": "home2",
+  "name": "TianDoHome",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
+  "description": "使用 Vue 3 + Vite 构建的配置驱动个人主页 / 社团主页模板",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vue3",
+    "vite",
+    "personal-website",
+    "homepage",
+    "i18n"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "server": "node server/gameServer.js"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@mdui/icons": "^1.0.3",
     "animate.css": "^4.1.1",
     "axios": "^1.7.2",
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "markdown-it": "^14.1.1",
-    "socket.io": "^4.8.3",
-    "socket.io-client": "^4.8.3",
     "vue": "^3.4.29",
     "vue-i18n": "^11.1.11",
     "vue-router": "^4.3.3"

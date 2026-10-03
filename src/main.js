@@ -4,6 +4,11 @@ import router from './router'
 import '@/assets/main.css'
 import 'animate.css'
 import { i18n } from '@/i18n/i18n'
+import { applyTheme, applySiteMeta } from '@/config'
+
+// 主题与站点信息统一来自 src/config/website.json
+applyTheme()
+applySiteMeta()
 
 const app = createApp(App)
 

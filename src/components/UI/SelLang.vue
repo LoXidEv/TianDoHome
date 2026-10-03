@@ -1,5 +1,6 @@
 <script>
 import { useI18n } from 'vue-i18n'
+import config from '@/config'
 
 export default {
     setup() {
@@ -9,25 +10,13 @@ export default {
     data() {
         return {
             showLanguageMenu: false,
-            languages: [
-                {
-                    code: 'en',
-                    name: 'English'
-                },
-                {
-                    code: 'zh',
-                    name: '简体中文'
-                },
-                {
-                    code: 'tc',
-                    name: '繁體中文'
-                },
-            ]
+            assets: config.assets,
+            languages: config.site.locales
         }
     },
     computed: {
         selected() {
-            const currentCode = this.locale || localStorage.getItem('lang') || 'zh'
+            const currentCode = this.locale || localStorage.getItem('lang') || config.site.defaultLocale
             return this.getLangName(currentCode)
         }
     },
@@ -45,10 +34,14 @@ export default {
         },
     },
     mounted() {
-        this.locale = localStorage.getItem('lang') || 'zh'
+        const stored = localStorage.getItem('lang')
+        if (stored && this.languages.some(lang => lang.code === stored)) {
+            this.locale = stored
+        }
     }
 }
 </script>
+
 
 <template>
     <div class="lang_list" :style="{ width: showLanguageMenu ? '100%' : '0' }">
@@ -59,7 +52,7 @@ export default {
     </div>
     <button class="lang_selected" @click="showLanguageMenu = !showLanguageMenu">
         {{ selected }}
-        <img src="/img/icon/lang.png" width="20" alt="Language Icon">
+        <img :src="assets.langIcon" width="20" alt="Language Icon">
     </button>
 </template>
 

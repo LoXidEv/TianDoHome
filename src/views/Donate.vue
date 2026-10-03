@@ -1,11 +1,14 @@
 <script setup>
+import config from '@/config'
+
+const donate = config.donate
 </script>
 
 <template>
     <div class="dc_donate">
         <div class="donate_title" v-reveal>{{ $t('donate.title') }}</div>
         <div class="donate_subtitle" v-reveal="{ animation: 'fadeInUp', delay: 120 }">{{ $t('donate.subtitle') }}</div>
-        <img src="/img/DoNG/other/weixin_qr.webp" :alt="$t('donate.wechatQr')" class="donate_qr"
+        <img :src="donate.image" :alt="$t('donate.wechatQr')" class="donate_qr"
             v-reveal="{ animation: 'zoomIn', delay: 240 }">
     </div>
 </template>

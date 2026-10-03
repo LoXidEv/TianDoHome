@@ -1,11 +1,14 @@
 <script setup>
 import Navbar from './components/UI/Navbar.vue';
+import config from '@/config';
+
+const { assets, features } = config
 </script>
 
 <template>
-  <img alt="Moe Counter" style="display: none;"
-    src="https://count.getloli.com/@LoXidEv?name=LoXidEv&theme=booru-ve&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto">
-  <img src="/img/DoNG/DoNG_Bg3.webp" alt="Banner" class="dc_bg_full">
+  <img v-if="features.moeCounter.enabled" alt="Moe Counter" style="display: none;"
+    :src="features.moeCounter.src">
+  <img :src="assets.pageBackground" alt="Banner" class="dc_bg_full">
   <div class="loxi_page">
     <div class="loxi_width">
       <RouterView v-slot="{ Component }">

@@ -6,6 +6,7 @@ import About from '@/views/About.vue'
 import Friend from '@/views/Friend.vue'
 import Donate from '@/views/Donate.vue'
 import { i18n } from '@/i18n/i18n'
+import config from '@/config'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,7 +45,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  document.title = i18n.global.t('website.title')
+  document.title = i18n.global.t(config.site.titleKey)
 })
 
 export default router

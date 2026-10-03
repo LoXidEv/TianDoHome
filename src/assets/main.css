@@ -40,27 +40,8 @@
 }
 
 :root {
-  --text-color: #474440;
-  --theme-color: #4a6293;
-  --theme-color-2: #f7f7f7;
-  --theme-color-3: #f0f0f0;
-  --border-color: #4a62936c;
-  --background-color: #ffffff;
-  --navbar-hover: #4a62931a;
-  --navbar-hover-2: #47444011;
-  --background-color-navbar: #ffffffea;
-  --background-color-oc: #ffffff88;
-  --border-radius: 10px;
-
-  /* 动画曲线与节奏：简约、舒适的缓动 */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-
-  /* 动画时长（在此统一配置全局动效节奏） */
-  --duration-fast: 0.5s;   /* 消失 / 收起 */
-  --duration-base: 0.35s;  /* 悬停 / 常规过渡 */
-  --duration-slow: 0.5s;   /* 入场 / 显现 */
-
+  /* 主题变量（颜色 / 圆角 / 动效节奏）统一在 src/config/website.json 的 theme 中配置，
+     由 src/main.js 在启动时写入根元素。此处仅保留由基础变量派生的变量。 */
   --transition-base: all var(--duration-base) var(--ease-out);
 
   /* animate.css 全局时长 */

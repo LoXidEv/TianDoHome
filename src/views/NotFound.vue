@@ -1,9 +1,12 @@
 <script setup>
+import config from '@/config'
+
+const assets = config.assets
 </script>
 
 <template>
     <div class="notfound_card">
-        <img src="/img/DoNG/DoNG_404_left.webp" alt="Background Left" class="notfound_bg_left" />
+        <img :src="assets.notFoundLeft" alt="Background Left" class="notfound_bg_left" />
         <div class="notfound_content">
             <div class="notfound_title" v-reveal="{ animation: 'fadeInUp', delay: 100 }">{{ $t('notfound.title') }}</div>
             <div class="notfound_subtitle" v-reveal="{ animation: 'fadeInUp', delay: 220 }">{{ $t('notfound.subtitle') }}</div>
@@ -11,7 +14,7 @@
                 {{ $t('notfound.back') }}
             </RouterLink>
         </div>
-        <img src="/img/DoNG/DoNG_404_right.webp" alt="Background Right" class="notfound_bg_right" />
+        <img :src="assets.notFoundRight" alt="Background Right" class="notfound_bg_right" />
     </div>
 </template>
 

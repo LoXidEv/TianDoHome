@@ -1,21 +1,30 @@
 <script setup>
+import config from '@/config'
+
+const { banner, assets } = config
 const currentYear = new Date().getFullYear()
+
+const overlayStyle = (overlay) => {
+    const style = {}
+    if (overlay.top) style.top = overlay.top
+    if (overlay.right) style.right = overlay.right
+    if (overlay.left) style.left = overlay.left
+    return style
+}
 </script>
 
 <template>
     <div class="dc_home">
         <div class="banner_container" v-reveal="{ animation: 'fadeInUp', delay: 0 }">
-            <img src="/img/banner/cat_text.webp" alt="Banner" class="banner_image">
-            <div class="banner_text" style="top: 10px; left: 10px;">
-                The sun goes to cross the Western sea,
-                <br>
-                leaving its last salutation to the East.
-            </div>
-            <div class="banner_text is_mobile" style="top: 240px; right: 10px;">
-                I rise, not for the age, but for who I am to be.
+            <!-- 横幅区域：在 src/config/website.json 的 banner 中配置图片与文案 -->
+            <img v-if="banner.enabled && banner.image" :src="banner.image" :alt="banner.alt"
+                class="banner_image">
+            <div v-for="(overlay, index) in banner.overlays" :key="index"
+                :class="['banner_text', { is_mobile: overlay.hideOnMobile }]" :style="overlayStyle(overlay)">
+                {{ overlay.text }}
             </div>
             <div class="banner_profile">
-                <img src="/img/DoNG/DoNG_Avatar.webp" alt="Logo" class="profile_avatar"
+                <img :src="assets.avatar" alt="Logo" class="profile_avatar"
                     v-reveal="{ animation: 'zoomIn', delay: 180 }">
                 <div class="profile_name" v-reveal="{ animation: 'fadeInUp', delay: 240 }">{{ $t('website.name') }}
                 </div>
@@ -23,7 +32,7 @@ const currentYear = new Date().getFullYear()
                 </div>
                 <div class="profile_footer" v-reveal="{ animation: 'fadeInUp', delay: 360 }">{{ $t('website.copyright',
                     { year: currentYear }) }}</div>
-                <img src="/img/DoNG/DoNG_Home_Bg.webp" alt="Background" class="profile_bg">
+                <img :src="assets.homeBackground" alt="Background" class="profile_bg">
             </div>
         </div>
     </div>
@@ -32,6 +41,7 @@ const currentYear = new Date().getFullYear()
 <style scoped>
 .banner_text {
     position: absolute;
+    white-space: pre-line;
     font-family: 'Poppins Bold';
     font-size: clamp(12px, 2vw + 8px, 40px);
     line-height: 1.2;
