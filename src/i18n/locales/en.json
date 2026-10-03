@@ -1,0 +1,69 @@
+{
+    "website": {
+        "title": "Wintergrass Space Station - Embrace the quiet of winter asparagus, taste the sweetness of citrus fruit, sip light tea, and perceive the simplicity of life",
+        "name": "Wintergrass Space Station",
+        "slogan": "Embrace the quiet of winter asparagus, taste the sweetness of citrus fruit, sip light tea, and perceive the simplicity of life",
+        "copyright": "© {year} Aspartic Acid"
+    },
+    "navbar": {
+        "home": "Home",
+        "about": "About",
+        "donate": "Donate",
+        "contact": "Contact",
+        "friend": "Friends",
+        "blog": "Blog",
+        "menu": {
+            "inside": "Internal",
+            "outside": "External"
+        }
+    },
+    "title": {
+        "organization": "Organization",
+        "organizationSub": "Organization",
+        "activeProjects": "Active Projects",
+        "activeProjectsSub": "Active-Projects",
+        "aiProjects": "AI Projects",
+        "aiProjectsSub": "AI-Projects",
+        "contact": "Contact",
+        "contactSub": "Contact",
+        "friend": "Friends",
+        "friendSub": "Friends"
+    },
+    "organization": {
+        "officialWebsite": "Official Website"
+    },
+    "home": {
+        "logo": "Logo",
+        "aboutIntro": "Meet the organizations and projects behind this site",
+        "donateIntro": "Your support keeps us improving",
+        "contactIntro": "Messaging · Community · Open source · Videos · Email",
+        "friendIntro": "Exchange links and share fun things together"
+    },
+    "about": {
+        "coshTitle": "COSH Team",
+        "coshContent": "COSH is a developer community made up of hobbyist developers. From a single line of code to an entire world",
+        "sarLabTitle": "SAR Labo+try",
+        "sarLabContent": "Brand-new SAR real-time player stats query website",
+        "sawToolTitle": "SAW Tool",
+        "sawToolContent": "Super Animal Royale Toolkit",
+        "sarMarketTitle": "SAR Pearl Market (Discontinued)",
+        "sarMarketContent": "Simulated trading hub for rare pearls from Super Animal Royale"
+    },
+    "donate": {
+        "title": "Donate",
+        "subtitle": "Your support drives us to keep improving",
+        "wechatQr": "WeChat Payment QR Code"
+    },
+    "contact": {
+        "qqDesc": "Instant messaging",
+        "discordDesc": "Community chat",
+        "githubDesc": "Open source & code",
+        "bilibiliDesc": "Videos & updates",
+        "emailDesc": "Business & formal contact"
+    },
+    "notfound": {
+        "title": "404 Page Not Found",
+        "subtitle": "Lost on the edge of the Internet",
+        "back": "Click! (Back to Home)"
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "website": {
+        "title": "冬草太空站 - 攬天冬之幽，品橘果之甘，飲清茶之淡，悟生活之簡",
+        "name": "冬草太空站",
+        "slogan": "攬天冬之幽，品橘果之甘，飲清茶之淡，悟生活之簡",
+        "copyright": "© {year} 天冬胺酸"
+    },
+    "navbar": {
+        "home": "首頁",
+        "about": "關於",
+        "donate": "贊助",
+        "contact": "聯絡",
+        "friend": "友站",
+        "blog": "部落格",
+        "menu": {
+            "inside": "站內",
+            "outside": "站外"
+        }
+    },
+    "title": {
+        "organization": "所屬組織",
+        "organizationSub": "Organization",
+        "activeProjects": "進行中專案",
+        "activeProjectsSub": "Active-Projects",
+        "aiProjects": "AI 專案",
+        "aiProjectsSub": "AI-Projects",
+        "contact": "聯絡",
+        "contactSub": "Contact",
+        "friend": "友站",
+        "friendSub": "Friends"
+    },
+    "organization": {
+        "officialWebsite": "官方網站"
+    },
+    "home": {
+        "logo": "標誌",
+        "aboutIntro": "從組織與專案，認識站點背後的故事",
+        "donateIntro": "您的支持，讓我們持續進步",
+        "contactIntro": "即時通訊 · 社群 · 開源 · 影片 · 郵件",
+        "friendIntro": "交換友站，一起分享有趣內容"
+    },
+    "about": {
+        "coshTitle": "COSH Team",
+        "coshContent": "COSH 是由開發愛好者組成的開發社團，從一行程式碼建構一個世界",
+        "sarLabTitle": "SAR Labo+try",
+        "sarLabContent": "全新 SAR 即時玩家戰績查詢網站",
+        "sawToolTitle": "SAW Tool",
+        "sawToolContent": "超級動物大逃殺工具組",
+        "sarMarketTitle": "SAR Pearl Market（停止開發）",
+        "sarMarketContent": "超級動物大逃殺稀有珍珠模擬交易中心"
+    },
+    "donate": {
+        "title": "贊助",
+        "subtitle": "您的支持，讓我們持續進步",
+        "wechatQr": "微信收款條碼"
+    },
+    "contact": {
+        "qqDesc": "即時通訊 · 隨緣在線",
+        "discordDesc": "社群日常交流",
+        "githubDesc": "開源專案與程式碼",
+        "bilibiliDesc": "影片與動態分享",
+        "emailDesc": "商務與正式合作"
+    },
+    "notfound": {
+        "title": "404 頁面不存在",
+        "subtitle": "迷失在網際網路的邊際",
+        "back": "咔嚓！（返回首頁）"
+    }
+}

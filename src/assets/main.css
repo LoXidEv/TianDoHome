@@ -1,0 +1,148 @@
+@font-face {
+  font-family: 'HooskaiChamferedSquare';
+  src: url('/font/HooskaiChamferedSquare-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url('/font/Poppins-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins SemiBold';
+  src: url('/font/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins Regular';
+  src: url('/font/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'MonaspaceKryptonVarVF';
+  src: url('/font/MonaspaceKryptonVarVF.ttf');
+}
+
+@font-face {
+  font-family: 'GenSenRounded-B';
+  src: url('/font/GenSenRounded/GenSenRounded-B.ttc');
+}
+
+@font-face {
+  font-family: 'GenSenRounded-R';
+  src: url('/font/GenSenRounded/GenSenRounded-R.ttc');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  scrollbar-width: none;
+}
+
+:root {
+  --text-color: #474440;
+  --theme-color: #4a6293;
+  --theme-color-2: #f7f7f7;
+  --theme-color-3: #f0f0f0;
+  --border-color: #4a62936c;
+  --background-color: #ffffff;
+  --navbar-hover: #4a62931a;
+  --navbar-hover-2: #47444011;
+  --background-color-navbar: #ffffffea;
+  --background-color-oc: #ffffff88;
+  --border-radius: 10px;
+
+  /* 动画曲线与节奏：简约、舒适的缓动 */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* 动画时长（在此统一配置全局动效节奏） */
+  --duration-fast: 0.5s;   /* 消失 / 收起 */
+  --duration-base: 0.35s;  /* 悬停 / 常规过渡 */
+  --duration-slow: 0.5s;   /* 入场 / 显现 */
+
+  --transition-base: all var(--duration-base) var(--ease-out);
+
+  /* animate.css 全局时长 */
+  --animate-duration: var(--duration-slow);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'GenSenRounded-R';
+  min-width: 320px;
+  color: var(--text-color);
+  background-color: #f9fafb;
+}
+
+.loxi_button {
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--theme-color);
+  font-size: 14px;
+  font-family: 'Poppins SemiBold';
+  background-color: var(--background-color);
+  padding: 6px 12px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--theme-color);
+  transition: var(--transition-base);
+  word-break: keep-all;
+
+  &:hover {
+    background-color: var(--theme-color);
+    color: #ffffff;
+  }
+
+  &:focus {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* ===== 页面切换过渡（App.vue 的 <Transition name="page">） ===== */
+.page-enter-active {
+  transition: opacity var(--duration-slow) ease, transform var(--duration-slow) var(--ease-out);
+}
+
+.page-leave-active {
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) var(--ease-in-out);
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* ===== 滚动进入视口（配合 v-reveal 指令，进入后由 animate.css 接管） ===== */
+.reveal-hidden {
+  opacity: 0;
+}
+
+/* ===== 尊重系统「减弱动效」偏好 ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-hidden {
+    opacity: 1;
+  }
+}

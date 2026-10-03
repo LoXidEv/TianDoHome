@@ -1,0 +1,69 @@
+{
+  "website": {
+    "title": "冬草空间站 - 揽天冬之幽，品橘果之甘，饮清茶之淡，悟生活之简",
+    "name": "冬草空间站",
+    "slogan": "揽天冬之幽，品橘果之甘，饮清茶之淡，悟生活之简",
+    "copyright": "© {year} 天冬氨酸"
+  },
+  "navbar": {
+    "home": "主页",
+    "about": "关于",
+    "donate": "打赏",
+    "contact": "联系",
+    "friend": "友链",
+    "blog": "博客",
+    "menu": {
+      "inside": "站内",
+      "outside": "站外"
+    }
+  },
+  "title": {
+    "organization": "所在组织",
+    "organizationSub": "Organization",
+    "activeProjects": "活跃项目",
+    "activeProjectsSub": "Active-Projects",
+    "aiProjects": "AI 项目",
+    "aiProjectsSub": "AI-Projects",
+    "contact": "联系",
+    "contactSub": "Contact",
+    "friend": "友链",
+    "friendSub": "Friends"
+  },
+  "organization": {
+    "officialWebsite": "官方网站"
+  },
+  "home": {
+    "logo": "Logo",
+    "aboutIntro": "从组织与项目，认识站点背后的故事",
+    "donateIntro": "您的支持推动我们不断变好",
+    "contactIntro": "即时通讯 · 社区 · 开源 · 视频 · 邮件",
+    "friendIntro": "交换友链，一起分享有趣的内容"
+  },
+  "about": {
+    "coshTitle": "COSH Team",
+    "coshContent": "COSH 是由小动物开发者组成的开发社团，从一行代码到一个世界",
+    "sarLabTitle": "SAR Labo+try",
+    "sarLabContent": "全新的 SAR 实时玩家战绩数据查询网站",
+    "sawToolTitle": "SAW Tool",
+    "sawToolContent": "超级动物大逃杀工具集",
+    "sarMarketTitle": "SAR Pearl Market（终止开发）",
+    "sarMarketContent": "来自超级动物大逃杀的稀有珍珠交易中心-模拟"
+  },
+  "donate": {
+    "title": "打赏",
+    "subtitle": "您的支持推动我们不断变好",
+    "wechatQr": "微信收款码"
+  },
+  "contact": {
+    "qqDesc": "即时通讯 · 随缘在线",
+    "discordDesc": "社区日常交流",
+    "githubDesc": "开源项目与代码",
+    "bilibiliDesc": "视频与动态分享",
+    "emailDesc": "商务与正式合作"
+  },
+  "notfound": {
+    "title": "404 页面不存在",
+    "subtitle": "迷失在互联网的边缘",
+    "back": "咔嚓！（返回主页）"
+  }
+}
