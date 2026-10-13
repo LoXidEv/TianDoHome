@@ -51,24 +51,11 @@ export default {
     overflow: hidden;
 }
 
-@keyframes titleLogoFloat {
-    0%,
-    100% {
-        transform: translateY(0) rotate(-90deg);
-    }
-
-    50% {
-        transform: translateY(-6px) rotate(-90deg);
-    }
-}
-
 .dc_title_h2_logo {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 120px;
-    transform: rotate(-90deg);
-    animation: titleLogoFloat 7s ease-in-out infinite;
+    bottom: -20px;
+    right: -10px;
+    height: 140px;
     z-index: 1;
 }
 

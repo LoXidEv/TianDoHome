@@ -156,7 +156,6 @@ hr {
     width: 40px;
     height: 40px;
     border-radius: var(--border-radius);
-    transform: rotate(-90deg);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 

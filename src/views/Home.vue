@@ -102,7 +102,7 @@ const overlayStyle = (overlay) => {
     position: absolute;
     top: -80px;
     left: 20px;
-    border-radius: var(--border-radius);
+    /* border-radius: var(--border-radius); */
     width: 100px;
     height: 100px;
     user-select: none;

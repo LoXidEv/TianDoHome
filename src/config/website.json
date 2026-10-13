@@ -43,9 +43,8 @@
     "durationSlow": "0.5s"
   },
   "assets": {
-    "logo": "/img/DoNG/DoNG_Logo.webp",
-    "logoBold": "/img/DoNG/DoNG_Logo_Bold.webp",
-    "avatar": "/img/DoNG/DoNG_Avatar.webp",
+    "logo": "/img/DoNG/DoNG_Logo_Avatar.png",
+    "avatar": "/img/DoNG/Logo.png",
     "homeBackground": "/img/DoNG/DoNG_Home_Bg.webp",
     "pageBackground": "/img/DoNG/DoNG_Bg3.webp",
     "menuIcon": "/img/icon/menu.png",
