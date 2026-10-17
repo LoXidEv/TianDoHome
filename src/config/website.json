@@ -17,10 +17,6 @@
       {
         "code": "en",
         "name": "English"
-      },
-      {
-        "code": "ja",
-        "name": "日本語"
       }
     ]
   },
@@ -146,7 +142,7 @@
           {
             "titleKey": "about.sawToolTitle",
             "contentKey": "about.sawToolContent",
-            "logo": "/img/logo/sarlab_logo.svg",
+            "logo": "https://sawtool.cosh.work/image/sawtool-logo.webp",
             "link": "https://sawtool.cosh.work"
           }
         ]
