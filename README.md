@@ -8,8 +8,9 @@
 
 - ⚙️ **配置驱动**：站点信息、主题、导航、友链、项目、联系方式、图片资源均集中在 [`src/config/website.json`](./src/config/website.json)
 - 🎨 **主题可配**：主色、文字色、圆角、动效节奏等都可在配置文件中调整，无需改 CSS
-- 🌏 **多语言**：内置简体中文 / 繁體中文 / English / 日本語，新增语言只需放入一个 JSON
+- 🌏 **多语言**：内置简体中文 / 繁體中文 / English，新增语言只需放入一个 JSON
 - 🖼️ **横幅可配**：内置 Banner 配置区块，替换图片与叠加文案即可
+- 🎵 **音乐小组件**：基于 NeteaseCloudMusicApi 的导航栏歌单播放器，支持封面、歌单、进度、上下首与异常自动跳过，切换页面不中断播放
 - 🎬 **丝滑动效**：基于 `animate.css` + 滚动进入视口的 `v-reveal` 指令
 - 📱 **响应式布局**：移动端与桌面端均有适配
 - 🧩 **组件化**：Vue 3 `<script setup>` / Options API 混合，结构清晰易扩展
@@ -165,6 +166,21 @@ pnpm format   # Prettier 格式化 src/
 | `organization.avatars` | 组织卡片上的装饰头像列表 |
 | `features.moeCounter` | 萌萌计数器，`enabled` 控制开关，`src` 为计数图片地址 |
 
+### 9. 音乐 `music`
+
+音乐播放器是内嵌在底部导航栏中的小组件，仅支持**歌单**模式，填写歌单 ID 即可：
+
+```jsonc
+"music": {
+  "apiBase": "https://music.loxi.work", // NeteaseCloudMusicApi 地址
+  "playlistId": "3778678",              // 网易云歌单 ID
+  "level": "standard",                  // 音质：standard / higher / exhigh 等
+  "limit": 1000                         // 最大读取曲目数
+}
+```
+
+播放地址会在切换到歌曲时按需请求；不可播放或加载失败的歌曲会自动跳过。
+
 ## 🌏 新增一门语言
 
 1. 在 [`src/i18n/locales/`](./src/i18n/locales) 下新建 `<code>.json`（可复制 `zh.json` 翻译）；
@@ -192,9 +208,11 @@ TianDoHome/
 │  ├─ i18n/
 │  │  ├─ locales/           # 各语言文案
 │  │  └─ i18n.js            # i18n 实例（自动加载语言包）
+│  ├─ api/
+│  │  └─ music.js           # 歌单 / 曲目 / 播放地址接口
 │  ├─ router/index.js       # 路由
 │  ├─ components/
-│  │  ├─ UI/                # Navbar / Title / SelLang
+│  │  ├─ UI/                # Navbar / Title / SelLang / MusicPlayer
 │  │  ├─ Organization.vue   # 组织卡片
 │  │  └─ ShowList.vue       # 通用列表卡片
 │  ├─ views/                # Home / About / Contact / Donate / Friend / NotFound

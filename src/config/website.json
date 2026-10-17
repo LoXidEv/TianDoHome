@@ -257,6 +257,13 @@
       "https://cosh.work/img/zzdev_avatar.webp"
     ]
   },
+  "music": {
+    "apiBase": "https://music.loxi.work",
+    "playlistId": "13721484522",
+    "level": "standard",
+    "limit": 1000
+  },
+
   "features": {
     "moeCounter": {
       "enabled": true,

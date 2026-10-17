@@ -12,6 +12,7 @@
         "contact": "聯絡",
         "friend": "友站",
         "blog": "部落格",
+        "music": "音樂",
         "menu": {
             "inside": "站內",
             "outside": "站外"
@@ -27,7 +28,9 @@
         "contact": "聯絡",
         "contactSub": "Contact",
         "friend": "友站",
-        "friendSub": "Friends"
+        "friendSub": "Friends",
+        "music": "音樂",
+        "musicSub": "Music"
     },
     "organization": {
         "officialWebsite": "官方網站"
@@ -60,6 +63,26 @@
         "githubDesc": "開源專案與程式碼",
         "bilibiliDesc": "影片與動態分享",
         "emailDesc": "商務與正式合作"
+    },
+    "music": {
+        "playlist": "歌單",
+        "loadingPlaylist": "正在載入歌單…",
+        "loadingTrack": "正在載入歌曲…",
+        "playlistError": "歌單載入失敗，請稍後重試",
+        "retry": "重試",
+        "empty": "歌單中暫無歌曲",
+        "unavailable": "該歌曲暫不可播放，正在切換到下一首…",
+        "allUnavailable": "目前歌單暫無可播放的歌曲",
+        "playBlocked": "瀏覽器阻止了自動播放，請點擊播放按鈕",
+        "unknownArtist": "未知歌手",
+        "tracks": "{count} 首",
+        "nowPlaying": "正在播放",
+        "progress": "播放進度",
+        "previous": "上一首",
+        "next": "下一首",
+        "play": "播放",
+        "pause": "暫停",
+        "close": "關閉"
     },
     "notfound": {
         "title": "404 頁面不存在",

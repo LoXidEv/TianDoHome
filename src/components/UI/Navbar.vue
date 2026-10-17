@@ -1,10 +1,12 @@
 <script>
 import SelLang from './SelLang.vue';
+import MusicPlayer from './MusicPlayer.vue';
 import config from '@/config';
 
 export default {
     components: {
-        SelLang
+        SelLang,
+        MusicPlayer
     },
     data() {
         return {
@@ -79,6 +81,7 @@ export default {
             <button :class="'navbar_item_button ' + (isMenu ? 'button_hover' : '')" @click="MenuClick">
                 <img :src="assets.menuIcon" alt="Menu" class="navbar_item_button_icon">
             </button>
+            <MusicPlayer :menu-open="isMenu" @open="isMenu = false" />
             <div v-for="item in navbarLinkConfig.filter(item => !item.isLink && !item.isMenu)" :key="item.id">
                 <RouterLink :to="item.path" :class="'navbar_item ' + (($route.path == item.path) ? 'focus' : '')">
                     {{ item.name }}
@@ -253,6 +256,7 @@ hr {
 }
 
 .loxi_navbar {
+    position: relative;
     background-color: var(--background-color-navbar);
     border-radius: var(--border-radius);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

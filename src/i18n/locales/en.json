@@ -12,6 +12,7 @@
         "contact": "Contact",
         "friend": "Friends",
         "blog": "Blog",
+        "music": "Music",
         "menu": {
             "inside": "Internal",
             "outside": "External"
@@ -27,7 +28,9 @@
         "contact": "Contact",
         "contactSub": "Contact",
         "friend": "Friends",
-        "friendSub": "Friends"
+        "friendSub": "Friends",
+        "music": "Music",
+        "musicSub": "Music"
     },
     "organization": {
         "officialWebsite": "Official Website"
@@ -60,6 +63,26 @@
         "githubDesc": "Open source & code",
         "bilibiliDesc": "Videos & updates",
         "emailDesc": "Business & formal contact"
+    },
+    "music": {
+        "playlist": "Playlist",
+        "loadingPlaylist": "Loading playlist…",
+        "loadingTrack": "Loading track…",
+        "playlistError": "Failed to load the playlist. Please try again later.",
+        "retry": "Retry",
+        "empty": "No tracks in this playlist",
+        "unavailable": "This track is unavailable. Skipping to the next one…",
+        "allUnavailable": "No playable tracks in this playlist",
+        "playBlocked": "Autoplay was blocked. Please press play.",
+        "unknownArtist": "Unknown artist",
+        "tracks": "{count} tracks",
+        "nowPlaying": "Now Playing",
+        "progress": "Playback progress",
+        "previous": "Previous",
+        "next": "Next",
+        "play": "Play",
+        "pause": "Pause",
+        "close": "Close"
     },
     "notfound": {
         "title": "404 Page Not Found",

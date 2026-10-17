@@ -12,6 +12,7 @@
     "contact": "联系",
     "friend": "友链",
     "blog": "博客",
+    "music": "音乐",
     "menu": {
       "inside": "站内",
       "outside": "站外"
@@ -27,7 +28,9 @@
     "contact": "联系",
     "contactSub": "Contact",
     "friend": "友链",
-    "friendSub": "Friends"
+    "friendSub": "Friends",
+    "music": "音乐",
+    "musicSub": "Music"
   },
   "organization": {
     "officialWebsite": "官方网站"
@@ -60,6 +63,26 @@
     "githubDesc": "开源项目与代码",
     "bilibiliDesc": "视频与动态分享",
     "emailDesc": "商务与正式合作"
+  },
+  "music": {
+    "playlist": "歌单",
+    "loadingPlaylist": "正在加载歌单…",
+    "loadingTrack": "正在加载歌曲…",
+    "playlistError": "歌单加载失败，请稍后重试",
+    "retry": "重试",
+    "empty": "歌单中暂无歌曲",
+    "unavailable": "该歌曲暂不可播放，正在切换到下一首…",
+    "allUnavailable": "当前歌单暂无可播放的歌曲",
+    "playBlocked": "浏览器阻止了自动播放，请点击播放按钮",
+    "unknownArtist": "未知歌手",
+    "tracks": "{count} 首",
+    "nowPlaying": "正在播放",
+    "progress": "播放进度",
+    "previous": "上一首",
+    "next": "下一首",
+    "play": "播放",
+    "pause": "暂停",
+    "close": "关闭"
   },
   "notfound": {
     "title": "404 页面不存在",
