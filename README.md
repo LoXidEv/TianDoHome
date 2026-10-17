@@ -173,13 +173,15 @@ pnpm format   # Prettier 格式化 src/
 ```jsonc
 "music": {
   "apiBase": "https://music.loxi.work", // NeteaseCloudMusicApi 地址
-  "playlistId": "3778678",              // 网易云歌单 ID
+  "playlistId": "13721484522",          // 网易云歌单 ID
   "level": "standard",                  // 音质：standard / higher / exhigh 等
-  "limit": 1000                         // 最大读取曲目数
+  "limit": 1000,                        // 最大读取曲目数
+  "maxAttempts": 3,                     // 单曲加载失败时的最大尝试次数
+  "retryDelay": 1200                    // 重试间隔（毫秒）
 }
 ```
 
-播放地址会在切换到歌曲时按需请求；不可播放或加载失败的歌曲会自动跳过。
+播放地址会在切换到歌曲时按需请求。加载失败时**不会自动切歌**，而是按 `maxAttempts` 重试当前歌曲；达到上限后停止并提示，避免无限循环；检测到断网时直接提示检查网络。
 
 ## 🌏 新增一门语言
 

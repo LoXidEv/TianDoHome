@@ -29,12 +29,17 @@ const isPlaying = ref(false)
 const currentTime = ref(0)
 const duration = ref(0)
 const notice = ref('')
-const unavailableIds = ref([])
+
+// 失败重试策略：同一首歌最多尝试 maxAttempts 次，每次间隔 retryDelay 毫秒
+const maxAttempts = Math.max(1, Number(music.maxAttempts) || 3)
+const retryDelay = Math.max(0, Number(music.retryDelay) || 1200)
 
 let playlistToken = 0
 let trackToken = 0
 let loadTimer = null
-let skipTimer = null
+let retryTimer = null
+let failedToken = -1
+let attempts = 0
 let pendingAutoplay = false
 let seeking = false
 
@@ -65,10 +70,10 @@ function clearLoadTimer() {
   }
 }
 
-function clearSkipTimer() {
-  if (skipTimer) {
-    clearTimeout(skipTimer)
-    skipTimer = null
+function clearRetryTimer() {
+  if (retryTimer) {
+    clearTimeout(retryTimer)
+    retryTimer = null
   }
 }
 
@@ -90,8 +95,10 @@ async function loadPlaylist() {
   playlistLoading.value = true
   playlistError.value = false
   notice.value = ''
-  unavailableIds.value = []
-  clearSkipTimer()
+  clearLoadTimer()
+  clearRetryTimer()
+  attempts = 0
+  failedToken = -1
   const token = ++playlistToken
 
   try {
@@ -117,55 +124,57 @@ async function loadPlaylist() {
   }
 }
 
-function findPlayable(from) {
-  const total = tracks.value.length
-  if (!total) return -1
-  const start = ((from % total) + total) % total
-  for (let offset = 0; offset < total; offset += 1) {
-    const index = (start + offset) % total
-    if (!unavailableIds.value.includes(tracks.value[index].id)) return index
-  }
-  return -1
-}
-
-function handleUnavailable(index) {
+function handleFailure(index, token) {
+  if (token !== trackToken) return
   if (index !== currentIndex.value) return
-  if (trackStatus.value === 'error') return
+  // 同一次尝试可能同时触发 timeout / error 等多个回调，这里去重
+  if (failedToken === token) return
+  failedToken = token
 
-  trackStatus.value = 'error'
+  clearLoadTimer()
   isPlaying.value = false
   pendingAutoplay = false
-  clearLoadTimer()
+  trackStatus.value = 'error'
 
-  const track = tracks.value[index]
-  if (track && !unavailableIds.value.includes(track.id)) {
-    unavailableIds.value = [...unavailableIds.value, track.id]
-  }
-  notice.value = t('music.unavailable')
-
-  // 自动跳过当前不可播放的歌曲
-  const next = findPlayable(index + 1)
-  if (next === -1) {
-    notice.value = t('music.allUnavailable')
+  // 智能检测：断网时不再空转重试
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+    notice.value = t('music.offline')
     return
   }
-  skipTimer = setTimeout(() => {
-    if (trackStatus.value === 'error') selectTrack(next, true)
-  }, 900)
+
+  // 未达到上限时自动重试当前歌曲，不切换到下一首
+  if (attempts < maxAttempts) {
+    notice.value = t('music.retrying', { current: attempts, total: maxAttempts })
+    retryTimer = setTimeout(() => {
+      if (index === currentIndex.value && trackStatus.value === 'error') {
+        selectTrack(index, true, true)
+      }
+    }, retryDelay)
+    return
+  }
+
+  // 达到上限后停止尝试，交给用户决定重试或换歌，避免无限循环
+  notice.value = t('music.playFailed')
 }
 
-async function selectTrack(index, autoplay = true) {
+async function selectTrack(index, autoplay = true, isRetry = false) {
   if (!canControl.value) return
   if (index < 0 || index >= tracks.value.length) return
   if (trackStatus.value === 'loading' && index === currentIndex.value) return
+
+  // 用户主动切歌时重置次数；自动重试则沿用当前尝试次数
+  if (!isRetry) {
+    attempts = 0
+    clearRetryTimer()
+  }
 
   const token = ++trackToken
   const audio = audioEl.value
   if (!audio) return
 
   clearLoadTimer()
-  clearSkipTimer()
   pendingAutoplay = autoplay
+  attempts += 1
   trackStatus.value = 'loading'
   isPlaying.value = false
   currentTime.value = 0
@@ -179,21 +188,21 @@ async function selectTrack(index, autoplay = true) {
 
   // 加载超时兜底，防止一直停留在 loading 状态
   loadTimer = setTimeout(() => {
-    if (token === trackToken && trackStatus.value === 'loading') handleUnavailable(index)
+    if (token === trackToken && trackStatus.value === 'loading') handleFailure(index, token)
   }, 15000)
 
   try {
     const url = await getSongUrl(music.apiBase, tracks.value[index].id, music.level)
     if (token !== trackToken) return
     if (!url) {
-      handleUnavailable(index)
+      handleFailure(index, token)
       return
     }
     audio.src = url
     audio.load()
   } catch (error) {
     if (token !== trackToken) return
-    handleUnavailable(index)
+    handleFailure(index, token)
   }
 }
 
@@ -221,22 +230,16 @@ function togglePlay() {
 
 function playNext() {
   if (!canOperate.value) return
-  const next = findPlayable(currentIndex.value + 1)
-  if (next === -1) {
-    notice.value = t('music.allUnavailable')
-    return
-  }
-  selectTrack(next, true)
+  const total = tracks.value.length
+  if (!total) return
+  selectTrack((currentIndex.value + 1) % total, true)
 }
 
 function playPrev() {
   if (!canOperate.value) return
-  const prev = findPlayable(currentIndex.value - 1)
-  if (prev === -1) {
-    notice.value = t('music.allUnavailable')
-    return
-  }
-  selectTrack(prev, true)
+  const total = tracks.value.length
+  if (!total) return
+  selectTrack((currentIndex.value - 1 + total) % total, true)
 }
 
 function seekFromEvent(event) {
@@ -286,6 +289,10 @@ function onLoadedMetadata() {
 
 function onCanPlay() {
   clearLoadTimer()
+  clearRetryTimer()
+  // 播放成功后重置重试计数，避免后续偶发错误被误判为连续失败
+  attempts = 0
+  failedToken = -1
   if (trackStatus.value === 'loading' || trackStatus.value === 'idle') {
     trackStatus.value = 'ready'
   }
@@ -308,8 +315,11 @@ function onEnded() {
 }
 
 function onAudioError() {
+  const audio = audioEl.value
+  // 切歌时清空 src 也可能触发 error，此时不应计入当前歌曲的失败次数
+  if (!audio || !audio.src) return
   if (trackStatus.value === 'loading' || trackStatus.value === 'ready') {
-    handleUnavailable(currentIndex.value)
+    handleFailure(currentIndex.value, trackToken)
   }
 }
 
@@ -325,7 +335,7 @@ onBeforeUnmount(() => {
   playlistToken += 1
   trackToken += 1
   clearLoadTimer()
-  clearSkipTimer()
+  clearRetryTimer()
   if (audioEl.value) {
     audioEl.value.pause()
     audioEl.value.removeAttribute('src')

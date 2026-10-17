@@ -57,14 +57,15 @@ export async function getPlaylistTracks(apiBase, playlistId, limit = 1000) {
 
 /** 获取单曲播放地址；不可播放时返回 null */
 export async function getSongUrl(apiBase, songId, level = 'standard') {
-  const data = await fetchJson(
+  const result = await fetchJson(
     withBase(
       apiBase,
-      `/song/url/v1?id=${encodeURIComponent(songId)}&level=${encodeURIComponent(level)}`
+      `/song/url/match?id=${encodeURIComponent(songId)}&level=${encodeURIComponent(level)}`
     )
   )
-  const item = data?.data?.[0]
-  if (!item?.url) return null
+  // /song/url/match 返回 { code, data: "音频地址", proxyUrl }
+  const url = result?.data || result?.proxyUrl
+  if (!url) return null
   // 接口返回的地址可能是 http，统一升级为 https，避免 HTTPS 页面触发混合内容拦截
-  return item.url.replace(/^http:/, 'https:')
+  return String(url).replace(/^http:/, 'https:')
 }
